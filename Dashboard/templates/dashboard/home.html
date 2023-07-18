@@ -74,6 +74,11 @@
                                 <div class="card-body p-4">
                                     <h5 class="card-title fw-semibold">Change Password</h5>
                                     <p class="card-subtitle mb-4">To change your password please confirm here</p>
+                                     <div id="toast">
+                                        {% for message in messages %}
+                                        <div class="alert alert-info" role="alert"><strong>Message: </strong><i>{{ message }}</i></div>
+                                        {% endfor %}
+                                    </div>
                                     <form method="post" action="">
                                         {% csrf_token %}
                                         {% include 'dashboard/form.html' with form=form %}

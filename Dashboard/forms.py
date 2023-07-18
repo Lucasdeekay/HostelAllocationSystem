@@ -118,11 +118,11 @@ class RegisterForm(forms.Form):
 
 
 class ForgotPasswordForm(forms.Form):
-    user_id = forms.CharField(
+    username = forms.CharField(
         max_length=30,
         widget=forms.TextInput(
             attrs={
-                'placeholder': 'Enter Matric No/Staff Id',
+                'placeholder': 'Enter Your Username',
                 'required': '',
                 'class': 'input',
             }
@@ -131,7 +131,7 @@ class ForgotPasswordForm(forms.Form):
     email = forms.EmailField(
         widget=forms.EmailInput(
             attrs={
-                'placeholder': 'Enter Email',
+                'placeholder': 'Enter Your Email',
                 'required': '',
                 'class': 'input',
             }
@@ -140,9 +140,9 @@ class ForgotPasswordForm(forms.Form):
 
     def clean(self):
         cleaned_data = super(ForgotPasswordForm, self).clean()
-        user_id = cleaned_data.get('user_id')
+        username = cleaned_data.get('username')
         email = cleaned_data.get('email')
-        if not user_id or not email:
+        if not username or not email:
             raise forms.ValidationError("Field cannot be empty")
 
 

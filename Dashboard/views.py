@@ -43,7 +43,7 @@ class LoginView(View):
         #  Check if the form is valid
         if form.is_valid():
             # Process the input
-            username = form.cleaned_data['username'].strip()
+            username = form.cleaned_data['username'].strip().upper()
             password = form.cleaned_data['password'].strip()
             # Authenticate the user login details
             user = authenticate(request, username=username, password=password)
@@ -84,11 +84,11 @@ class ForgotPasswordView(View):
         form = ForgotPasswordForm(request.POST)
         #  Check if the form is valid
         if form.is_valid():
-            user_id = form.cleaned_data['user_id'].strip()
+            username = form.cleaned_data['username'].strip()
             email = form.cleaned_data['email'].strip()
 
-            if User.objects.filter(**{'username': user_id, 'email': email}).exists():
-                user = User.objects.get(username=user_id)
+            if User.objects.filter(**{'username': username, 'email': email}).exists():
+                user = User.objects.get(username=username)
                 # Redirect back to dashboard if true
                 return HttpResponseRedirect(reverse('Dashboard:change_password', args=(user.id,)))
             else:
@@ -152,6 +152,12 @@ class RegisterView(View):
             return render(request, self.template_name, {'form': form})
 
     def post(self, request):
+        for hostel in Hostel.objects.all():
+            if not Room.objects.filter(hostel=hostel).exists():
+                for i in range(hostel.total_rooms):
+                    room = Room.objects.create(hostel=hostel, room_no=i + 1)
+                    room.save()
+
         form = RegisterForm(request.POST)
         if form.is_valid():
             last_name = form.cleaned_data['last_name'].strip().upper()
@@ -172,7 +178,10 @@ class RegisterView(View):
                         room for room in rooms if room.hostel.gender == gender
                     ]
                     room = random.choice(free_rooms)
+                    room.space_available -= 1
+                    room.save()
                     user = User.objects.create_user(username=matric_no, password=password, email=email)
+                    user.save()
                     Student.objects.create(user=user, last_name=last_name, first_name=first_name, matric_no=matric_no, gender=gender, room=room)
                     messages.success(request, "Registration successful")
                     return HttpResponseRedirect(reverse("Dashboard:login"))
@@ -200,10 +209,9 @@ class HomeView(View):
             return render(request, self.template_name, {'form': form, "student": student, "date": datetime.datetime.now().date()})
 
     # Create post function to process the form on submission
-    def post(self, request, username):
+    def post(self, request):
         # Check if request method is POST
         if request.method == "POST":
-            user = User.objects.get(username=username)
             # Get the submitted form
             form = UpdatePasswordForm(request.POST)
             # Check if form is valid
@@ -213,43 +221,39 @@ class HomeView(View):
                 password = form.cleaned_data['password'].strip()
                 confirm_password = form.cleaned_data['confirm_password'].strip()
                 # Check if old password match
-                if user.check_password(old_password):
+                if request.user.check_password(old_password):
                     if password == old_password:
                         # Create message report
                         messages.error(request, "Previous password cannot be used")
                         # return data back to page
-                        return HttpResponseRedirect(
-                            reverse('Dashboard:settings', args=(user.username,)))
-                    elif password == "password":
+                        return HttpResponseRedirect(reverse('Dashboard:home'))
+                    elif password == old_password:
                         # Create message report
-                        messages.error(request, "Password cannot be 'password'")
+                        messages.error(request, "You cannot use previous password")
                         # return data back to page
-                        return HttpResponseRedirect(
-                            reverse('Dashboard:settings', args=(user.username,)))
+                        return HttpResponseRedirect(reverse('Dashboard:home'))
                     else:
                         # Check if both passwords match
                         if password == confirm_password:
                             # Update password
-                            user.set_password(password)
+                            request.user.set_password(password)
                             # Save updated data
-                            user.save()
+                            request.user.save()
                             # Create message report
                             messages.success(request, "Password successfully changed")
                             # return data back to page
-                            return HttpResponseRedirect(reverse("Dashboard:settings"))
+                            return HttpResponseRedirect(reverse('Dashboard:login'))
                         # If passwords do not match
                         else:
                             # Create message report
                             messages.error(request, "New password does not match")
                             # return data back to page
-                            return HttpResponseRedirect(
-                                reverse('Dashboard:settings', args=(user.username,)))
+                            return HttpResponseRedirect(reverse('Dashboard:home'))
                 # Otherwise
                 else:
                     messages.error(request, "Old password entered does not match")
                     # return data back to page
-                    return HttpResponseRedirect(
-                        reverse('Dashboard:settings', args=(user.username,)))
+                    return HttpResponseRedirect(reverse('Dashboard:home'))
 
 
 # Create a logout view

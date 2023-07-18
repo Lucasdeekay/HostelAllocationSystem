@@ -15,7 +15,7 @@ class Hostel(models.Model):
                 ('M', 'M'),
                 ('F', 'F'),
             ])
-    total_rooms = models.PositiveIntegerField()
+    total_rooms = models.PositiveIntegerField(default=100)
 
     def __str__(self):
         return self.name
@@ -27,7 +27,7 @@ class Room(models.Model):
     space_available = models.PositiveIntegerField(default=6)
 
     def __str__(self):
-        return self.title
+        return f"{self.hostel.name} - {self.room_no}"
 
 
 class Student(models.Model):
@@ -43,3 +43,4 @@ class Student(models.Model):
 
     def __str__(self):
         return self.matric_no
+
