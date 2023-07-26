@@ -13,7 +13,7 @@ class RoomAdmin(admin.ModelAdmin):
 
 
 class StudentAdmin(admin.ModelAdmin):
-    list_display = ('user', 'last_name', 'first_name', 'matric_no', 'room')
+    list_display = ('user', 'last_name', 'first_name', 'matric_no', 'image', 'room')
 
 
 admin.site.register(Hostel, HostelAdmin)

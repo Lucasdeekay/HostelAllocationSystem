@@ -19,5 +19,6 @@ urlpatterns = [
     path('forgot_password', ForgotPasswordView.as_view(), name="forgot_password"),
     path('forgot_password/change_password<int:user_id>', ChangePasswordView.as_view(), name="change_password"),
     path('dashboard', HomeView.as_view(), name="home"),
+    path('dashboard/upload_image', views.upload_image, name="upload_image"),
     path('api', include(router.urls)),
 ]

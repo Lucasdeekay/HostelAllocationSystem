@@ -210,3 +210,20 @@ class UpdatePasswordForm(forms.Form):
         confirm_password = cleaned_data.get('confirm_password')
         if not old_password or not password or not confirm_password:
             raise forms.ValidationError("Field cannot be empty")
+
+
+class UploadImageForm(forms.Form):
+    image = forms.FileField(
+        widget=forms.FileInput(
+            attrs={
+                'required': '',
+                'class': 'input',
+            }
+        )
+    )
+
+    def clean(self):
+        cleaned_data = super(UploadImageForm, self).clean()
+        image = cleaned_data.get('image')
+        if not image:
+            raise forms.ValidationError("Field cannot be empty")

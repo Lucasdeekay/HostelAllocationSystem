@@ -11,7 +11,8 @@ from django.urls import reverse
 from django.utils.decorators import method_decorator
 from django.views import View
 
-from Dashboard.forms import LoginForm, ForgotPasswordForm, ChangePasswordForm, UpdatePasswordForm, RegisterForm
+from Dashboard.forms import LoginForm, ForgotPasswordForm, ChangePasswordForm, UpdatePasswordForm, RegisterForm, \
+    UploadImageForm
 from Dashboard.models import Hostel, Room, Student
 
 
@@ -204,9 +205,10 @@ class HomeView(View):
         # Otherwise
         else:
             form = UpdatePasswordForm()
+            image_form = UploadImageForm()
             student = Student.objects.get(user=request.user)
             # load the page with the form
-            return render(request, self.template_name, {'form': form, "student": student, "date": datetime.datetime.now().date()})
+            return render(request, self.template_name, {'form': form, 'image_form': image_form, "student": student, "date": datetime.datetime.now().date()})
 
     # Create post function to process the form on submission
     def post(self, request):
@@ -254,6 +256,24 @@ class HomeView(View):
                     messages.error(request, "Old password entered does not match")
                     # return data back to page
                     return HttpResponseRedirect(reverse('Dashboard:home'))
+
+
+def upload_image(request):
+    # Check if request method is POST
+    if request.method == "POST":
+        # Get the submitted form
+        form = UploadImageForm(request.POST, request.FILES)
+        # Check if form is valid
+        if form.is_valid():
+            # Get user input
+            image = form.cleaned_data['image']
+            student = get_object_or_404(Student, user=request.user)
+            student.image = image
+            student.save()
+            # Create a dictionary of data to be returned to the page
+            messages.success(request, "Profile picture successfully updated")
+            # return data back to page
+            return HttpResponseRedirect(reverse("Dashboard:home"))
 
 
 # Create a logout view

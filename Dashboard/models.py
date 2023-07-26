@@ -39,6 +39,7 @@ class Student(models.Model):
         ('M', 'M'),
         ('F', 'F'),
     ])
+    image = models.ImageField(upload_to='dashboard/student', blank=True, null=True)
     room = models.ForeignKey(Room, on_delete=models.CASCADE)
 
     def __str__(self):
