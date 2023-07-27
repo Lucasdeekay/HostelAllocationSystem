@@ -13,12 +13,17 @@
                     <div class="d-flex align-items-center gap-4 mb-4">
                 <div class="position-relative">
                     <div class="border border-2 border-primary rounded-circle">
-                        <img src="{% static 'dashboard/dist/images/profile/user-1.jpg' %}" class="rounded-circle m-1"
-                             alt="user1" width="60"/>
+                        {% if student.image %}
+                        <img src="/media/{{ student.image }}" alt=""
+                             class="rounded-circle m-1" width="60" height="60">
+                        {% else %}
+                        <img src="{% static 'dashboard/dist/images/profile/user-1.jpg' %}" alt=""
+                             class="rounded-circle m-1" width="60" height="60">
+                        {% endif %}
                     </div>
                 </div>
                 <div>
-                    <h3 class="fw-semibold">Hi, <span class="text-dark">{{ person.last_name|lower|capfirst|default:"John" }} {{ person.first_name|lower|capfirst|default:"Doe" }}</span>
+                    <h3 class="fw-semibold">Hi, <span class="text-dark">{{ student.last_name|lower|capfirst|default:"John" }} {{ student.first_name|lower|capfirst|default:"Doe" }}</span>
                     </h3>
                     <span>It's a new day - {{ date }}</span>
                 </div>
