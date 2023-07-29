@@ -78,6 +78,14 @@
                     <!-- Dashboard -->
                     <!-- =================== -->
                     <li class="sidebar-item">
+                        <a class="sidebar-link" href="{% url 'Dashboard:print_slip' %}" aria-expanded="false">
+                          <span class="d-flex">
+                            <i class="ti ti-file"></i>
+                          </span>
+                            <span class="hide-menu">Print Slip</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
                         <a class="sidebar-link" href="{% url 'Dashboard:logout' %}" aria-expanded="false">
                           <span class="d-flex">
                             <i class="ti ti-logout"></i>
@@ -137,8 +145,13 @@
                                    aria-expanded="false">
                                     <div class="d-flex align-items-center">
                                         <div class="user-profile-img">
-                                            <img src="{% static 'dashboard/dist/images/profile/user-1.jpg' %}"
-                                                 class="rounded-circle" width="35" height="35" alt=""/>
+                                            {% if student.image %}
+                                            <img src="/media/{{ student.image }}" alt=""
+                                                 class="rounded-circle" width="35" height="35">
+                                            {% else %}
+                                            <img src="{% static 'dashboard/dist/images/profile/user-1.jpg' %}" alt=""
+                                                 class="rounded-circle" width="35" height="35">
+                                            {% endif %}
                                         </div>
                                     </div>
                                 </a>

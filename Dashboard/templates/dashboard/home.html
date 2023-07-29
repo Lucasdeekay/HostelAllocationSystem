@@ -59,6 +59,10 @@
                                             <h5 class="card-title fw-semibold">{{ student.last_name|lower|capfirst|default:"John" }} {{ student.first_name|lower|capfirst|default:"Doe" }}</h5>
                                         </div>
                                         <div class="mb-4">
+                                            <p class="card-subtitle mb-1">Programme</p>
+                                            <h5 class="card-title fw-semibold">{{ student.programme|lower|capfirst|default:"Computer science" }} </h5>
+                                        </div>
+                                        <div class="mb-4">
                                              <p class="card-subtitle mb-1">Matric No</p>
                                             <h5 class="card-title fw-semibold">{{ student.matric_no|default:"DU0000" }}</h5>
                                         </div>
@@ -68,7 +72,7 @@
                                         </div>
                                         <div class="mb-4">
                                             <p class="card-subtitle mb-1">Hostel</p>
-                                            <h5 class="card-title fw-semibold">{{ student.room.hostel.name|lower|capfirst|default:"Male Hostel" }}</h5>
+                                            <h5 class="card-title fw-semibold">{{ student.room.hostel.name|lower|capfirst|default:"Male Hostel" }} Hall</h5>
                                         </div>
                                         <div class="mb-4">
                                             <p class="card-subtitle mb-1">Room No</p>

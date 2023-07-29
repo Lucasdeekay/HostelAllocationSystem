@@ -83,6 +83,29 @@ class RegisterForm(forms.Form):
             }
         )
     )
+    programme = forms.CharField(
+        max_length=30,
+        widget=forms.Select(
+            choices=[
+                ('', 'Select Programme...'),
+                ('CYBER SECURITY', 'CYBER SECURITY'),
+                ('COMPUTER SCIENCE', 'COMPUTER SCIENCE'),
+                ('SOFTWARE ENGINEERING', 'SOFTWARE ENGINEERING'),
+                ('MICROBIOLOGY', 'MICROBIOLOGY'),
+                ('INDUSTRIAL CHEMISTRY', 'INDUSTRIAL CHEMISTRY'),
+                ('BIOCHEMISTRY', 'BIOCHEMISTRY'),
+                ('BUSINESS ADMINISTRATION', 'BUSINESS ADMINISTRATION'),
+                ('ECONOMICS', 'ECONOMICS'),
+                ('ACCOUNTING', 'ACCOUNTING'),
+                ('MASS COMMUNICATION', 'MASS COMMUNICATION'),
+                ('CRIMINOLOGY', 'CRIMINOLOGY'),
+            ],
+            attrs={
+                'required': '',
+                'class': 'form-control',
+            }
+        )
+    )
     password = forms.CharField(
         max_length=100,
         widget=forms.PasswordInput(
@@ -111,9 +134,10 @@ class RegisterForm(forms.Form):
         matric_no = cleaned_data.get('matric_no')
         email = cleaned_data.get('email')
         gender = cleaned_data.get('gender')
+        programme = cleaned_data.get('programme')
         password = cleaned_data.get('password')
         confirm_password = cleaned_data.get('confirm_password')
-        if not last_name or not first_name or not matric_no or not gender or not email or not password or not confirm_password:
+        if not last_name or not first_name or not matric_no or not gender or not email or not programme or not password or not confirm_password:
             raise forms.ValidationError("Field cannot be empty")
 
 

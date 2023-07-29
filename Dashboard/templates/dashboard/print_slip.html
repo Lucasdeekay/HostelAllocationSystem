@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <!-- --------------------------------------------------- -->
+    <!-- Title -->
+    <!-- --------------------------------------------------- -->
+    <title>Print Slip | Hostel Allocation System</title>
+    <!-- --------------------------------------------------- -->
+    <!-- Required Meta Tag -->
+    <!-- --------------------------------------------------- -->
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="handheldfriendly" content="true"/>
+    <meta name="MobileOptimized" content="width"/>
+    <meta name="description" content="Hostel Allocation System"/>
+    <meta name="author" content="Kolawole Dennis OLukayode"/>
+    <meta name="keywords" content="Hostel Allocation System"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      margin: 40px;
+    }
+
+    .details {
+      background-color: #f8f8f8;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .logo {
+      width: 100px; /* Adjust the width of the logo as needed */
+      margin-bottom: 10px;
+    }
+
+    .user-picture {
+      width: 150px; /* Adjust the width of the user picture as needed */
+      border-radius: 50%;
+      margin-bottom: 15px;
+    }
+
+    button {
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    .back-button {
+      background-color: #dc3545;
+      margin-right: 10px;
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="details">
+    <img src="{% static 'dashboard/images/logo.png' %}" alt="" class="logo">
+    {% if student.image %}
+    <img src="/media/{{ student.image }}" alt="" class="user-picture">
+    {% else %}
+    <img src="{% static 'dashboard/dist/images/profile/user-1.jpg' %}" alt="" class="user-picture">
+    {% endif %}
+    <p><strong>Full Name:</strong> {{ student.last_name|lower|capfirst|default:"John" }} {{ student.first_name|lower|capfirst|default:"Doe" }}</p>
+    <p><strong>Matric No:</strong> {{ student.matric_no|default:"DU0000" }}</p>
+    <p><strong>Programme:</strong> {{ student.programme|lower|capfirst|default:"Computer science" }}</p>
+    <p><strong>Email:</strong> {{ student.user.email|lower|default:"johndoe@gmail.com" }}m</p>
+    <p><strong>Hostel:</strong> {{ student.room.hostel.name|lower|capfirst|default:"Male Hostel" }} Hall</p>
+    <p><strong>Room Number:</strong> {{ student.room.room_no|lower|capfirst|default:12 }}</p>
+  </div>
+
+  <button class="back-button" id="back-button" onclick="goBack()">Back to Homepage</button>
+  <button onclick="printDetails()" id="button">Print Details</button>
+
+  <script>
+    function goBack() {
+      // Replace this with the URL of your homepage or specify the action you want for the back button.
+      window.location.href = "{% url 'Dashboard:home' %}";
+    }
+
+    function printDetails() {
+      // Hide the "Print Details" button after it's pressed
+      document.getElementById("back-button").style.display = "none";
+      document.getElementById("button").style.display = "none";
+
+      window.print();
+
+      // Display the "Print Details" button again after 3 seconds (adjust the delay as needed)
+      setTimeout(function() {
+        document.getElementById("back-button").style.display = "inline";
+        document.getElementById("button").style.display = "inline";
+      }, 10);
+    }
+  </script>
+
+</body>
+</html>

@@ -15,7 +15,7 @@ class Hostel(models.Model):
                 ('M', 'M'),
                 ('F', 'F'),
             ])
-    total_rooms = models.PositiveIntegerField(default=100)
+    total_rooms = models.PositiveIntegerField()
 
     def __str__(self):
         return self.name
@@ -38,6 +38,19 @@ class Student(models.Model):
     gender = models.CharField(max_length=1, choices=[
         ('M', 'M'),
         ('F', 'F'),
+    ])
+    programme = models.CharField(max_length=100, default='COMPUTER SCIENCE', choices=[
+        ('CYBER SECURITY', 'CYBER SECURITY'),
+        ('COMPUTER SCIENCE', 'COMPUTER SCIENCE'),
+        ('SOFTWARE ENGINEERING', 'SOFTWARE ENGINEERING'),
+        ('MICROBIOLOGY', 'MICROBIOLOGY'),
+        ('INDUSTRIAL CHEMISTRY', 'INDUSTRIAL CHEMISTRY'),
+        ('BIOCHEMISTRY', 'BIOCHEMISTRY'),
+        ('BUSINESS ADMINISTRATION', 'BUSINESS ADMINISTRATION'),
+        ('ECONOMICS', 'ECONOMICS'),
+        ('ACCOUNTING', 'ACCOUNTING'),
+        ('MASS COMMUNICATION', 'MASS COMMUNICATION'),
+        ('CRIMINOLOGY', 'CRIMINOLOGY'),
     ])
     image = models.ImageField(upload_to='dashboard/student', blank=True, null=True)
     room = models.ForeignKey(Room, on_delete=models.CASCADE)

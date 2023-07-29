@@ -166,6 +166,7 @@ class RegisterView(View):
             matric_no = form.cleaned_data['matric_no'].strip().upper()
             email = form.cleaned_data['email'].strip()
             gender = form.cleaned_data['gender'].strip()
+            programme = form.cleaned_data['programme'].strip()
             password = form.cleaned_data['password'].strip()
             confirm_password = form.cleaned_data['confirm_password'].strip()
 
@@ -183,7 +184,7 @@ class RegisterView(View):
                     room.save()
                     user = User.objects.create_user(username=matric_no, password=password, email=email)
                     user.save()
-                    Student.objects.create(user=user, last_name=last_name, first_name=first_name, matric_no=matric_no, gender=gender, room=room)
+                    Student.objects.create(user=user, last_name=last_name, first_name=first_name, matric_no=matric_no, gender=gender, programme=programme, room=room)
                     messages.success(request, "Registration successful")
                     return HttpResponseRedirect(reverse("Dashboard:login"))
                 else:
@@ -256,6 +257,24 @@ class HomeView(View):
                     messages.error(request, "Old password entered does not match")
                     # return data back to page
                     return HttpResponseRedirect(reverse('Dashboard:home'))
+
+
+class PrintSlipView(View):
+    # Add template name
+    template_name = 'dashboard/print_slip.html'
+
+    # @method_decorator(login_required)
+    # Create get function
+    def get(self, request):
+        # Check if user is not logged in
+        if request.user.is_superuser:
+            # Redirect back to dashboard if true
+            return HttpResponseRedirect(reverse('Dashboard:login'))
+        # Otherwise
+        else:
+            student = Student.objects.get(user=request.user)
+            # load the page with the form
+            return render(request, self.template_name, {"student": student})
 
 
 def upload_image(request):
