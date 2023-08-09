@@ -35,6 +35,12 @@ class Student(models.Model):
     last_name = models.CharField(max_length=250)
     first_name = models.CharField(max_length=250)
     matric_no = models.CharField(max_length=30)
+    level = models.CharField(max_length=3, choices=[
+        ('100', '100'),
+        ('200', '200'),
+        ('300', '300'),
+        ('400', '400'),
+    ])
     gender = models.CharField(max_length=1, choices=[
         ('M', 'M'),
         ('F', 'F'),

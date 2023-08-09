@@ -33,7 +33,7 @@
     {% endif %}
 
     {% if field.help_text %}
-    <div class="help-block form-text with-errors form-control-feedback">{{ field.help_text }}</div>
+    <div class="help-block form-text text-info with-errors form-control-feedback">{{ field.help_text }}<span class="text-danger"> *</span></div>
     {% endif %}
 </div>
 {% endfor %}

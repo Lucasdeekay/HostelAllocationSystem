@@ -53,9 +53,10 @@ class RegisterForm(forms.Form):
     )
     matric_no = forms.CharField(
         max_length=30,
+        help_text="Newly admitted students should use their jamb reg no",
         widget=forms.TextInput(
             attrs={
-                'placeholder': 'Matric No',
+                'placeholder': 'Matric No / Registartion Number',
                 'required': '',
                 'class': 'form-control',
             }
@@ -71,9 +72,25 @@ class RegisterForm(forms.Form):
             }
         )
     )
+    level = forms.CharField(
+        widget=forms.Select(
+            choices=[
+                ('', 'Select Level...'),
+                ('100', '100'),
+                ('200', '200'),
+                ('300', '300'),
+                ('400', '400'),
+            ],
+            attrs={
+                'required': '',
+                'class': 'form-control'
+            }
+        )
+    )
     gender = forms.CharField(
         widget=forms.Select(
             choices=[
+                ('', 'Select Gender...'),
                 ('M', 'Male'),
                 ('F', 'Female'),
             ],
@@ -133,11 +150,12 @@ class RegisterForm(forms.Form):
         first_name = cleaned_data.get('first_name')
         matric_no = cleaned_data.get('matric_no')
         email = cleaned_data.get('email')
+        level = cleaned_data.get('level')
         gender = cleaned_data.get('gender')
         programme = cleaned_data.get('programme')
         password = cleaned_data.get('password')
         confirm_password = cleaned_data.get('confirm_password')
-        if not last_name or not first_name or not matric_no or not gender or not email or not programme or not password or not confirm_password:
+        if not last_name or not first_name or not matric_no or not level or not gender or not email or not programme or not password or not confirm_password:
             raise forms.ValidationError("Field cannot be empty")
 
 

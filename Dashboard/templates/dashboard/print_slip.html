@@ -81,6 +81,7 @@
     {% endif %}
     <p><strong>Full Name:</strong> {{ student.last_name|lower|capfirst|default:"John" }} {{ student.first_name|lower|capfirst|default:"Doe" }}</p>
     <p><strong>Matric No:</strong> {{ student.matric_no|default:"DU0000" }}</p>
+      <p><strong>Level:</strong> {{ student.level|default:"400" }}</p>
     <p><strong>Programme:</strong> {{ student.programme|lower|capfirst|default:"Computer science" }}</p>
     <p><strong>Email:</strong> {{ student.user.email|lower|default:"johndoe@gmail.com" }}m</p>
     <p><strong>Hostel:</strong> {{ student.room.hostel.name|lower|capfirst|default:"Male Hostel" }} Hall</p>

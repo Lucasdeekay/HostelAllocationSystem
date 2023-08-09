@@ -67,6 +67,10 @@
                                             <h5 class="card-title fw-semibold">{{ student.matric_no|default:"DU0000" }}</h5>
                                         </div>
                                         <div class="mb-4">
+                                             <p class="card-subtitle mb-1">Level</p>
+                                            <h5 class="card-title fw-semibold">{{ student.level|default:"400" }}</h5>
+                                        </div>
+                                        <div class="mb-4">
                                             <p class="card-subtitle mb-1">Email</p>
                                             <h5 class="card-title fw-semibold">{{ student.user.email|lower|default:"johndoe@gmail.com" }}</h5>
                                         </div>

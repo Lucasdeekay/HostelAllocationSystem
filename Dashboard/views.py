@@ -165,6 +165,7 @@ class RegisterView(View):
             first_name = form.cleaned_data['first_name'].strip().upper()
             matric_no = form.cleaned_data['matric_no'].strip().upper()
             email = form.cleaned_data['email'].strip()
+            level = form.cleaned_data['level'].strip()
             gender = form.cleaned_data['gender'].strip()
             programme = form.cleaned_data['programme'].strip()
             password = form.cleaned_data['password'].strip()
@@ -175,16 +176,40 @@ class RegisterView(View):
                 return HttpResponseRedirect(reverse("Dashboard:register"))
             else:
                 if password == confirm_password:
-                    rooms = Room.objects.filter(space_available__gt=0)
-                    free_rooms = [
-                        room for room in rooms if room.hostel.gender == gender
-                    ]
+                    if level == "400":
+                        if gender == "M":
+                            hostel = Hostel.objects.get(name="NEW MALE")
+                            free_rooms = Room.objects.filter(space_available__gt=0, hostel=hostel)
+                        else:
+                            hostel = Hostel.objects.get(name="BISHOP")
+                            free_rooms = Room.objects.filter(space_available__gt=0, hostel=hostel)
+
+                    elif level == "100":
+                        if gender == "M":
+                            hostel = Hostel.objects.get(name="REHOBOTH")
+                            free_rooms = Room.objects.filter(space_available__gt=0, hostel=hostel)
+                        else:
+                            hostel = Hostel.objects.get(name="FAITH")
+                            free_rooms = Room.objects.filter(space_available__gt=0, hostel=hostel)
+
+                    else:
+                        rooms = Room.objects.filter(space_available__gt=0)
+                        free_rooms = [
+                            room for room in rooms if room.hostel.gender == gender
+                        ]
+
+                    if len(free_rooms) < 1:
+                        rooms = Room.objects.filter(space_available__gt=0)
+                        free_rooms = [
+                            room for room in rooms if room.hostel.gender == gender
+                        ]
+
                     room = random.choice(free_rooms)
                     room.space_available -= 1
                     room.save()
                     user = User.objects.create_user(username=matric_no, password=password, email=email)
                     user.save()
-                    Student.objects.create(user=user, last_name=last_name, first_name=first_name, matric_no=matric_no, gender=gender, programme=programme, room=room)
+                    Student.objects.create(user=user, last_name=last_name, first_name=first_name, matric_no=matric_no, level=level, gender=gender, programme=programme, room=room)
                     messages.success(request, "Registration successful")
                     return HttpResponseRedirect(reverse("Dashboard:login"))
                 else:
