@@ -3,35 +3,32 @@
 # Overview
 The Hostel Allocation System is a web application developed using Django, designed to streamline the process of assigning hostels to students automatically upon registration. The system simplifies the allocation process and enhances efficiency by eliminating the need for manual intervention.
 
-# Features
+## Features
 
-# Automatic Hostel Assignment
+### Automatic Hostel Assignment
 Upon successful registration, students are automatically assigned to a hostel based on predefined criteria. This feature ensures a fair and efficient allocation process, saving time and resources.
 
-# Hostel Information
+### Hostel Information
 The system provides detailed information about each hostel, including its location, facilities, and any specific rules or guidelines. Students can access this information to familiarize themselves with their assigned hostel.
 
-# Printable Allocation Slip
+### Printable Allocation Slip
 Students can generate and print a hostel allocation slip directly from the system. The slip contains essential details such as hostel name, room number, and any additional instructions. This feature enables students to have a physical record of their hostel allocation.
 
 # Getting Started
 
-# Prerequisites
+## Prerequisites
 Python 3.x
 Django (install using pip install django)
 
-Installation
-Clone the repository:
+## Installation
 
-bash
-git clone https://github.com/your-username/hostel-allocation-system.git
-Navigate to the project directory:
+### Clone the repository:
+```git clone https://github.com/your-username/hostel-allocation-system.git```
 
-bash
-cd hostel-allocation-system
-Create a virtual environment:
+### Navigate to the project directory:
+```cd hostel-allocation-system```
 
-bash
+### Create a virtual environment:
 python -m venv venv
 Activate the virtual environment:
 
