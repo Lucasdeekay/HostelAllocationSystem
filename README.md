@@ -3,15 +3,15 @@
 # Overview
 The Hostel Allocation System is a web application developed using Django, designed to streamline the process of assigning hostels to students automatically upon registration. The system simplifies the allocation process and enhances efficiency by eliminating the need for manual intervention.
 
-## Features
+# Features
 
-### Automatic Hostel Assignment
+## Automatic Hostel Assignment
 Upon successful registration, students are automatically assigned to a hostel based on predefined criteria. This feature ensures a fair and efficient allocation process, saving time and resources.
 
-### Hostel Information
-The system provides detailed information about each hostel, including its location, facilities, and any specific rules or guidelines. Students can access this information to familiarize themselves with their assigned hostel.
+## Hostel Information
+The system provides detailed information about each hostel. Students can access this information to familiarize themselves with their assigned hostel.
 
-### Printable Allocation Slip
+## Printable Allocation Slip
 Students can generate and print a hostel allocation slip directly from the system. The slip contains essential details such as hostel name, room number, and any additional instructions. This feature enables students to have a physical record of their hostel allocation.
 
 # Getting Started
@@ -23,42 +23,36 @@ Django (install using pip install django)
 ## Installation
 
 ### Clone the repository:
-```git clone https://github.com/your-username/hostel-allocation-system.git```
+```git clone https://github.com/Lucasdeekay/HostelAllocationSystem.git```
 
 ### Navigate to the project directory:
-```cd hostel-allocation-system```
+```cd HostelAllocationSystem```
 
 ### Create a virtual environment:
-python -m venv venv
-Activate the virtual environment:
+```python -m venv venv```
 
+### Activate the virtual environment:
 On Windows:
+```venv\Scripts\activate```
 
-bash
-venv\Scripts\activate
 On Unix or MacOS:
+```source venv/bin/activate```
 
-bash
-Copy code
-source venv/bin/activate
-Install dependencies:
+### Install dependencies:
+```pip install -r requirements.txt```
 
-bash
-pip install -r requirements.txt
-Apply database migrations:
+### Apply database migrations:
+```python manage.py migrate```
 
-bash
-python manage.py migrate
-Run the development server:
+### Run the development server:
+```python manage.py runserver```
 
-bash
-python manage.py runserver
 Access the application in your web browser at http://localhost:8000/.
 
 # Usage
 Register as a new student on the system.
 Upon successful registration, the system will automatically assign a hostel based on predefined criteria.
-View hostel information to learn more about the assigned hostel.
+Login to learn more about the assigned hostel.
 Generate and print the hostel allocation slip for your records.
 
 
