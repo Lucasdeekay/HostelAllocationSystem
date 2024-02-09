@@ -21,7 +21,7 @@
     <!-- Favicon -->
     <!-- --------------------------------------------------- -->
     <link rel="shortcut icon" type="image/png" href="{% static 'dashboard/images/logo.png' %}"/>
-    <link id="themeColors" rel="stylesheet" href="{% static 'dashboard/dist/css/style.min.css' %}"/>
+    <link id="themeColors" rel="stylesheet" href="{% static 'dashboard/dist/css/styles.css' %}"/>
 
     <!--  jQuery cdn  -->
     <script src="https://code.jquery.com/jquery-3.6.3.min.js"
@@ -38,9 +38,9 @@
 </head>
 <body>
 <!-- Preloader -->
-<div class="preloader">
-    <img src="{% static 'dashboard/images/logo.png' %}" alt="loader" class="lds-ripple img-fluid"/>
-</div>
+<!--<div class="preloader">-->
+<!--    <img src="{% static 'dashboard/images/logo.png' %}" alt="loader" class="lds-ripple img-fluid"/>-->
+<!--</div>-->
 <!-- --------------------------------------------------- -->
 <!-- Body Wrapper -->
 <!-- --------------------------------------------------- -->
@@ -149,7 +149,7 @@
                                             <img src="/media/{{ student.image }}" alt=""
                                                  class="rounded-circle" width="35" height="35">
                                             {% else %}
-                                            <img src="{% static 'dashboard/dist/images/profile/user-1.jpg' %}" alt=""
+                                            <img src="{% static 'dashboard/assets/images/profile/user-1.jpg' %}" alt=""
                                                  class="rounded-circle" width="35" height="35">
                                             {% endif %}
                                         </div>
@@ -166,7 +166,7 @@
                                             <img src="/media/{{ student.image }}" alt=""
                                                  class="rounded-circle" width="80" height="80">
                                             {% else %}
-                                            <img src="{% static 'dashboard/dist/images/profile/user-1.jpg' %}" alt=""
+                                            <img src="{% static 'dashboard/assets/images/profile/user-1.jpg' %}" alt=""
                                                  class="rounded-circle" width="80" height="80">
                                             {% endif %}
                                             <div class="ms-3">
@@ -251,25 +251,25 @@
 <!-- ---------------------------------------------- -->
 <!-- Import Js Files -->
 <!-- ---------------------------------------------- -->
-<script src="{% static 'dashboard/dist/libs/jquery/dist/jquery.min.js' %}"></script>
-<script src="{% static 'dashboard/dist/libs/jquery-ui/dist/jquery-ui.min.js' %}"></script>
-<script src="{% static 'dashboard/dist/libs/simplebar/dist/simplebar.min.js' %}"></script>
-<script src="{% static 'dashboard/dist/libs/bootstrap/dist/js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'dashboard/assets/libs/jquery/dist/jquery.min.js' %}"></script>
+<script src="{% static 'dashboard/assets/libs/jquery-ui/dist/jquery-ui.min.js' %}"></script>
+<script src="{% static 'dashboard/assets/libs/simplebar/dist/simplebar.min.js' %}"></script>
+<script src="{% static 'dashboard/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js' %}"></script>
 <!-- ---------------------------------------------- -->
 <!-- core files -->
 <!-- ---------------------------------------------- -->
-<script src="{% static 'dashboard/dist/js/app.min.js' %}"></script>
-<script src="{% static 'dashboard/dist/js/app.init.js' %}"></script>
-<script src="{% static 'dashboard/dist/js/app-style-switcher.js' %}"></script>
-<script src="{% static 'dashboard/dist/js/sidebarmenu.js' %}"></script>
+<script src="{% static 'dashboard/assets/js/app.min.js' %}"></script>
+<script src="{% static 'dashboard/assets/js/app.init.js' %}"></script>
+<script src="{% static 'dashboard/assets/js/app-style-switcher.js' %}"></script>
+<script src="{% static 'dashboard/assets/js/sidebarmenu.js' %}"></script>
 
-<script src="{% static 'dashboard/dist/js/custom.js' %}"></script>
+<script src="{% static 'dashboard/assets/js/custom.js' %}"></script>
 <!-- ---------------------------------------------- -->
 <!-- current page js files -->
 <!-- ---------------------------------------------- -->
 
-<script src="{% static 'dashboard/dist/libs/fullcalendar/index.global.min.js' %}"></script>
-<script src="{% static 'dashboard/dist/js/apps/calendar-init.js' %}"></script>
+<script src="{% static 'dashboard/assets/libs/fullcalendar/index.global.min.js' %}"></script>
+<script src="{% static 'dashboard/assets/js/apps/calendar-init.js' %}"></script>
 
 <script>
     $(function(){
