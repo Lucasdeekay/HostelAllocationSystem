@@ -17088,9 +17088,7 @@ html[data-card=border] .card {
   color: var(--bs-success);
 }
 
-.has-success .form-control-success {
-  background-image: url(../../../assets/images/svgs/success.svg);
-}
+
 
 .has-success .form-control {
   border-color: var(--bs-success);
@@ -17104,9 +17102,7 @@ html[data-card=border] .card {
   color: var(--bs-warning);
 }
 
-.has-warning .form-control-warning {
-  background-image: url(../../../assets/images/svgs/warning.svg);
-}
+
 
 .has-warning .form-control {
   border-color: var(--bs-warning);
@@ -17120,9 +17116,7 @@ html[data-card=border] .card {
   color: var(--bs-danger);
 }
 
-.has-danger .form-control-danger {
-  background-image: url(../../../assets/images/svgs/danger.svg);
-}
+
 
 .has-danger .form-control {
   border-color: var(--bs-danger);
