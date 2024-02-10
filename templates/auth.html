@@ -1,69 +1,96 @@
-<!DOCTYPE html>
-<html lang="en">
+﻿<!DOCTYPE html>
+<html lang="en" dir="ltr" data-bs-theme="light" data-color-theme="Blue_Theme" data-layout="vertical">
 {% load static %}
 <head>
-    <!--  Title -->
-    <title>{% block title %}{% endblock title %} | Hostel Allocation System</title>
-    <!--  Required Meta Tag -->
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="handheldfriendly" content="true" />
-    <meta name="MobileOptimized" content="width" />
-    <meta name="description" content="Hostel Allocation System" />
-    <meta name="author" content="Kolawole Dennis Olukayode" />
-    <meta name="keywords" content="Timetable Management System" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- Required meta tags -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <!--  Favicon -->
-    <link rel="shortcut icon" type="image/png" href="{% static 'dashboard/images/logo.png' %}" />
+    <link rel="shortcut icon" type="image/png" href="{% static 'dashboard/images/logo.png' %}"/>
     <!-- Core Css -->
-    <link  id="themeColors"  rel="stylesheet" href="{% static 'dashboard/assets/css/styles.css' %}" />
-  </head>
-  <body>
-<!--    &lt;!&ndash; Preloader &ndash;&gt;-->
-<!--    <div class="preloader">-->
-<!--      <img src="{% static 'dashboard/images/logo.png' %}" alt="loader" class="lds-ripple img-fluid" />-->
-<!--    </div>-->
-<!--    &lt;!&ndash; Preloader &ndash;&gt;-->
-<!--    <div class="preloader">-->
-<!--      <img src="{% static 'dashboard/images/logo.png' %}" alt="loader" class="lds-ripple img-fluid" />-->
-<!--    </div>-->
-    <!--  Body Wrapper -->
-    <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-sidebartype="full" data-sidebar-position="fixed" data-header-position="fixed">
-      <div class="position-relative overflow-hidden radial-gradient min-vh-100">
-        <div class="position-relative z-index-5">
-          <div class="row">
-            <div class="col-xl-7 col-xxl-8">
-              <a href="{% url 'Dashboard:login' %}" class="text-nowrap logo-img d-block px-4 py-9 w-100">
-                <img src="{% static 'dashboard/images/logo.png' %}" width="70" alt="">
-                  <h2 class="mb-3 fs-7 fw-bolder" style="display:inline-block; margin-left:5px">DOMINION UNIVERSITY</h2>
-              </a>
-              <div class="d-none d-xl-flex align-items-center justify-content-center" style="height: calc(100vh - 80px);">
-                <img src="{% static 'dashboard/images/building.png' %}" alt="" class="img-fluid" width="800">
-              </div>
-            </div>
-            <div class="col-xl-5 col-xxl-4">
-              <div class="authentication-login min-vh-100 bg-body row justify-content-center align-items-center p-4">
-                {% block content %}
-                {% endblock content %}
-              </div>
-            </div>
-          </div>
+    <link id="themeColors" rel="stylesheet" href="{% static 'dashboard/assets/css/styles.css' %}"/>
+
+    <meta name="description" content="Hostel Allocation System"/>
+    <meta name="author" content="Kolawole Dennis Olukayode"/>
+    <meta name="keywords" content="Timetable Management System"/>
+
+    <title>{% block title %}{% endblock title %} | Hostel Allocation System</title>
+</head>
+
+<body>
+<div class="toast toast-onload align-items-center text-bg-primary border-0" role="alert" aria-live="assertive"
+     aria-atomic="true">
+    <div class="toast-body hstack align-items-start gap-6">
+        <i class="ti ti-alert-circle fs-6"></i>
+        <div>
+            <h5 class="text-white fs-3 mb-1">Hi, It's Pappy Coder</h5>
+            <h6 class="text-white fs-2 mb-0">Learn with us!!!</h6>
         </div>
-        
-      </div>
+        <button type="button" class="btn-close btn-close-white fs-2 m-0 ms-auto shadow-none" data-bs-dismiss="toast"
+                aria-label="Close"></button>
     </div>
-    
-    <!--  Import Js Files -->
-    <script src="{% static 'dashboard/assets/libs/jquery/dist/jquery.min.js' %}"></script>
-    <script src="{% static 'dashboard/assets/libs/simplebar/dist/simplebar.min.js' %}"></script>
-    <script src="{% static 'dashboard/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js' %}"></script>
-    <!--  core files -->
-    <script src="{% static 'dashboard/assets/js/app.min.js' %}"></script>
-    <script src="{% static 'dashboard/assets/js/app.init.js' %}"></script>
-    <script src="{% static 'dashboard/assets/js/app-style-switcher.js' %}"></script>
-    <script src="{% static 'dashboard/assets/js/sidebarmenu.js' %}"></script>
-    
-    <script src="{% static 'dashboard/assets/js/custom.js' %}"></script>
-  </body>
+</div>
+<div class="toast toast-onload align-items-center text-bg-primary border-0" role="alert" aria-live="assertive"
+     aria-atomic="true">
+    <div class="toast-body hstack align-items-start gap-6">
+        <i class="ti ti-alert-circle fs-6"></i>
+        <div>
+            <h5 class="text-white fs-3 mb-1">Hi, It's Pappy Coder</h5>
+            <h6 class="text-white fs-2 mb-0">Learn with us!!!</h6>
+        </div>
+        <button type="button" class="btn-close btn-close-white fs-2 m-0 ms-auto shadow-none" data-bs-dismiss="toast"
+                aria-label="Close"></button>
+    </div>
+</div>
+<div class="toast toast-onload align-items-center text-bg-primary border-0" role="alert" aria-live="assertive"
+     aria-atomic="true">
+    <div class="toast-body hstack align-items-start gap-6">
+        <i class="ti ti-alert-circle fs-6"></i>
+        <div>
+            <h5 class="text-white fs-3 mb-1">Hi, It's Pappy Coder</h5>
+            <h6 class="text-white fs-2 mb-0">Learn with us!!!</h6>
+        </div>
+        <button type="button" class="btn-close btn-close-white fs-2 m-0 ms-auto shadow-none" data-bs-dismiss="toast"
+                aria-label="Close"></button>
+    </div>
+</div>
+<!-- Preloader -->
+<div class="preloader">
+    <img src="{% static 'dashboard/images/logo.png' %}" alt="loader" class="lds-ripple img-fluid">
+</div>
+<div id="main-wrapper">
+    <div class="position-relative overflow-hidden radial-gradient min-vh-100 w-100">
+        <div class="position-relative z-index-5">
+            <div class="row">
+                <div class="col-xl-7 col-xxl-8">
+                    <div class="d-none d-xl-flex align-items-center justify-content-center"
+                         style="height: calc(100vh - 80px);">
+                        <img src="{% static 'dashboard/images/logo.png' %}" alt="" class="img-fluid" width="300">
+                    </div>
+                </div>
+                <div class="col-xl-5 col-xxl-4">
+                    <div class="authentication-login min-vh-100 bg-body row justify-content-center align-items-center p-4">
+                        {% block content %}
+                        {% endblock content %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="dark-transparent sidebartoggler"></div>
+
+<!--  Import Js Files -->
+<script src="{% static 'dashboard/assets/libs/jquery/dist/jquery.min.js' %}"></script>
+<script src="{% static 'dashboard/assets/libs/simplebar/dist/simplebar.min.js' %}"></script>
+<script src="{% static 'dashboard/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js' %}"></script>
+<!--  core files -->
+<script src="{% static 'dashboard/assets/js/app.min.js' %}"></script>
+<script src="{% static 'dashboard/assets/js/app.init.js' %}"></script>
+<script src="{% static 'dashboard/assets/js/theme.js' %}"></script>
+<script src="{% static 'dashboard/assets/js/sidebarmenu.js' %}"></script>
+</body>
 
 </html>

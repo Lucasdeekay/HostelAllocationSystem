@@ -11,109 +11,117 @@
             <div class="row align-items-center">
                 <div class="col-9">
                     <div class="d-flex align-items-center gap-4 mb-4">
-                <div class="position-relative">
-                    <div class="border border-2 border-primary rounded-circle">
-                        {% if student.image %}
-                        <img src="/media/{{ student.image }}" alt=""
-                             class="rounded-circle m-1" width="60" height="60">
-                        {% else %}
-                        <img src="{% static 'dashboard/dist/images/profile/user-1.jpg' %}" alt=""
-                             class="rounded-circle m-1" width="60" height="60">
-                        {% endif %}
+                        <div>
+                            <h3 class="fw-semibold">Hi, <span class="text-dark">
+                                {{ student.last_name|lower|capfirst|default:"John" }}
+                                {{ student.first_name|lower|capfirst|default:"Doe" }}
+                            </span>
+                            </h3>
+                            <span>It's a new day - {{ date }}</span>
+                        </div>
                     </div>
-                </div>
-                <div>
-                    <h3 class="fw-semibold">Hi, <span class="text-dark">{{ student.last_name|lower|capfirst|default:"John" }} {{ student.first_name|lower|capfirst|default:"Doe" }}</span>
-                    </h3>
-                    <span>It's a new day - {{ date }}</span>
-                </div>
-            </div>
                 </div>
                 <div class="col-3">
                     <div class="text-center mb-n5">
-                        <img src="{% static 'dashboard/dist/images/breadcrumb/ChatBc.png' %}" alt="" class="img-fluid mb-n4">
+                        <img src="{% static 'dashboard/assets/images/breadcrumb/ChatBc.png' %}" alt=""
+                             class="img-fluid mb-n4">
                     </div>
                 </div>
             </div>
         </div>
     </div>
     <div class="card-body">
-            <div class="tab-content" id="pills-tabContent">
-                <div class="tab-pane fade show active" id="pills-account" role="tabpanel"
-                     aria-labelledby="pills-account-tab" tabindex="0">
-                    <div class="row">
-                        <div class="col-lg-6 d-flex align-items-stretch">
-                            <div class="card w-100 position-relative overflow-hidden">
-                                <div class="card-body p-4">
-                                    <h5 class="card-title fw-semibold">My Profile</h5>
-                                    <div class="text-center">
-                                        {% if student.image %}
-                                        <img src="/media/{{ student.image }}" alt=""
-                                             class="img-fluid rounded-circle my-4" width="120" height="120">
-                                        {% else %}
-                                        <img src="{% static 'dashboard/dist/images/profile/user-1.jpg' %}" alt=""
-                                             class="img-fluid rounded-circle my-4" width="120" height="120">
-                                        {% endif %}
-                                        <div class="mb-4">
-                                            <p class="card-subtitle mb-1">Full Name</p>
-                                            <h5 class="card-title fw-semibold">{{ student.last_name|lower|capfirst|default:"John" }} {{ student.first_name|lower|capfirst|default:"Doe" }}</h5>
-                                        </div>
-                                        <div class="mb-4">
-                                            <p class="card-subtitle mb-1">Programme</p>
-                                            <h5 class="card-title fw-semibold">{{ student.programme|lower|capfirst|default:"Computer science" }} </h5>
-                                        </div>
-                                        <div class="mb-4">
-                                             <p class="card-subtitle mb-1">Matric No</p>
-                                            <h5 class="card-title fw-semibold">{{ student.matric_no|default:"DU0000" }}</h5>
-                                        </div>
-                                        <div class="mb-4">
-                                             <p class="card-subtitle mb-1">Level</p>
-                                            <h5 class="card-title fw-semibold">{{ student.level|default:"400" }}</h5>
-                                        </div>
-                                        <div class="mb-4">
-                                            <p class="card-subtitle mb-1">Email</p>
-                                            <h5 class="card-title fw-semibold">{{ student.user.email|lower|default:"johndoe@gmail.com" }}</h5>
-                                        </div>
-                                        <div class="mb-4">
-                                            <p class="card-subtitle mb-1">Hostel</p>
-                                            <h5 class="card-title fw-semibold">{{ student.room.hostel.name|lower|capfirst|default:"Male Hostel" }} Hall</h5>
-                                        </div>
-                                        <div class="mb-4">
-                                            <p class="card-subtitle mb-1">Room No</p>
-                                            <h5 class="card-title fw-semibold">{{ student.room.room_no|lower|capfirst|default:12 }}</h5>
-                                        </div>
+        <div class="tab-content" id="pills-tabContent">
+            <div class="tab-pane fade show active" id="pills-account" role="tabpanel"
+                 aria-labelledby="pills-account-tab" tabindex="0">
+                <div class="row">
+                    <div class="col-lg-6 d-flex align-items-stretch">
+                        <div class="card w-100 position-relative overflow-hidden">
+                            <div class="card-body p-4">
+                                <h5 class="card-title fw-semibold">My Profile</h5>
+                                <div class="text-center">
+                                    {% if student.image %}
+                                    <img src="/media/{{ student.image }}" alt=""
+                                         class="img-fluid rounded-circle my-4" width="120" height="120">
+                                    {% else %}
+                                    <img src="{% static 'dashboard/assets/images/profile/user-1.jpg' %}" alt=""
+                                         class="img-fluid rounded-circle my-4" width="120" height="120">
+                                    {% endif %}
+                                    <div class="mb-4">
+                                        <p class="card-subtitle mb-1">Full Name</p>
+                                        <h5 class="card-title fw-semibold">
+                                            {{ student.last_name|lower|capfirst|default:"John" }}
+                                            {{ student.first_name|lower|capfirst|default:"Doe" }}
+                                        </h5>
+                                    </div>
+                                    <div class="mb-4">
+                                        <p class="card-subtitle mb-1">Programme</p>
+                                        <h5 class="card-title fw-semibold">
+                                            {{ student.programme|lower|capfirst|default:"Computer science" }}
+                                        </h5>
+                                    </div>
+                                    <div class="mb-4">
+                                        <p class="card-subtitle mb-1">Matric No</p>
+                                        <h5 class="card-title fw-semibold">{{ student.matric_no|default:"DU0000" }}</h5>
+                                    </div>
+                                    <div class="mb-4">
+                                        <p class="card-subtitle mb-1">Level</p>
+                                        <h5 class="card-title fw-semibold">{{ student.level|default:"400" }}</h5>
+                                    </div>
+                                    <div class="mb-4">
+                                        <p class="card-subtitle mb-1">Email</p>
+                                        <h5 class="card-title fw-semibold">
+                                            {{ student.user.email|lower|default:"johndoe@gmail.com" }}
+                                        </h5>
+                                    </div>
+                                    <div class="mb-4">
+                                        <p class="card-subtitle mb-1">Hostel</p>
+                                        <h5 class="card-title fw-semibold">
+                                            {{ student.room.hostel.name|lower|capfirst|default:"Male Hostel" }} Hall
+                                        </h5>
+                                    </div>
+                                    <div class="mb-4">
+                                        <p class="card-subtitle mb-1">Room No</p>
+                                        <h5 class="card-title fw-semibold">
+                                            {{ student.room.room_no|lower|capfirst|default:12 }}
+                                        </h5>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-6 d-flex align-items-stretch">
-                            <div class="card w-100 position-relative overflow-hidden">
-                                <div class="card-body p-4">
-                                    <h5 class="card-title fw-semibold">Change Password</h5>
-                                    <p class="card-subtitle mb-4">To change your password please confirm here</p>
-                                     <div id="toast">
-                                        {% for message in messages %}
-                                        <div class="alert alert-info" role="alert"><strong>Message: </strong><i>{{ message }}</i></div>
-                                        {% endfor %}
-                                    </div>
-                                    <form method="post" action="">
-                                        {% csrf_token %}
-                                        {% include 'dashboard/form.html' with form=form %}
-                                        <button type="submit" class="btn btn-primary w-100 py-8 mb-4 rounded-2">Submit</button>
-                                    </form>
-
-                                    <form method="post" action="{% url 'Dashboard:upload_image' %}" enctype="multipart/form-data">
-                                        {% csrf_token %}
-                                        {% include 'dashboard/form.html' with form=image_form %}
-                                        <button type="submit" class="btn btn-primary w-100 py-8 mb-4 rounded-2">Submit</button>
-                                    </form>
+                    </div>
+                    <div class="col-lg-6 d-flex align-items-stretch">
+                        <div class="card w-100 position-relative overflow-hidden">
+                            <div class="card-body p-4">
+                                <h5 class="card-title fw-semibold">Change Password</h5>
+                                <p class="card-subtitle mb-4">To change your password please confirm here</p>
+                                <div id="toast">
+                                    {% for message in messages %}
+                                    <div class="alert alert-info" role="alert"><strong>Message: </strong><i>{{ message
+                                        }}</i></div>
+                                    {% endfor %}
                                 </div>
+                                <form method="post" action="">
+                                    {% csrf_token %}
+                                    {% include 'dashboard/form.html' with form=form %}
+                                    <button type="submit" class="btn btn-primary w-100 py-8 mb-4 rounded-2">Submit
+                                    </button>
+                                </form>
+
+                                <form method="post" action="{% url 'Dashboard:upload_image' %}"
+                                      enctype="multipart/form-data">
+                                    {% csrf_token %}
+                                    {% include 'dashboard/form.html' with form=image_form %}
+                                    <button type="submit" class="btn btn-primary w-100 py-8 mb-4 rounded-2">Submit
+                                    </button>
+                                </form>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 </div>
 
 {% endblock content %}
