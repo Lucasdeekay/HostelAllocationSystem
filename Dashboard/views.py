@@ -221,7 +221,7 @@ class HomeView(View):
     # Add template name
     template_name = 'dashboard/home.html'
 
-    # @method_decorator(login_required)
+    @method_decorator(login_required)
     # Create get function
     def get(self, request):
         # Check if user is not logged in
@@ -288,7 +288,7 @@ class PrintSlipView(View):
     # Add template name
     template_name = 'dashboard/print_slip.html'
 
-    # @method_decorator(login_required)
+    @method_decorator(login_required)
     # Create get function
     def get(self, request):
         # Check if user is not logged in
